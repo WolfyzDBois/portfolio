@@ -4,4 +4,9 @@
 
 Ce site présente mon parcours, mes projets et mes articles techniques.
 
-👉 Déployé automatiquement via FTP à chaque push sur la branche `main`.
+# ToDo
+
+- Favicon et nom
+- Flash à corriger
+- Blog
+- Compétences
