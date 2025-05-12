@@ -11,3 +11,4 @@ Ce site présente mon parcours, mes projets et mes articles techniques.
 - Blog
 - Compétences
 - Access
+- Navbar pour mobile
