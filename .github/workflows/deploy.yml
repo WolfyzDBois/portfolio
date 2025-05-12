@@ -3,7 +3,7 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - main  # Change selon ta branche principale
+      - main  # ou master selon ton dépôt
 
 jobs:
   ftp-deploy:
@@ -16,7 +16,8 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Deploy only specific files and folders via FTP
+      # 🔴 Étape 1 : suppression des anciens fichiers et dossiers
+      - name: Cleanup old FTP content
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_PORT: ${{ secrets.FTP_PORT }}
@@ -28,20 +29,36 @@ jobs:
           set ssl:verify-certificate no
           cd public_html
 
-          # Suppression contrôlée des anciens fichiers/dossiers
           rm -r assets
           rm -r blog
           rm -r projects
           rm -r scripts
           rm -r styles
+
           rm -f blog.html
           rm -f cv.html
           rm -f index.html
           rm -f projects.html
           rm -f reseaux.html
+          rm -f .htaccess
 
-          # Déploiement des nouveaux fichiers et dossiers
-          mirror --reverse --verbose --only-newer --exclude-glob README.md assets assets
+          quit
+          EOF
+
+      # 🟢 Étape 2 : upload des nouveaux fichiers et dossiers
+      - name: Upload updated content to FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USER","$FTP_PASS" -p "$FTP_PORT" "$FTP_HOST" <<EOF
+          set ftp:list-options -a
+          set ssl:verify-certificate no
+          cd public_html
+
+          mirror --reverse --verbose --only-newer assets assets
           mirror --reverse --verbose --only-newer blog blog
           mirror --reverse --verbose --only-newer projects projects
           mirror --reverse --verbose --only-newer scripts scripts
@@ -52,6 +69,7 @@ jobs:
           put -O . index.html
           put -O . projects.html
           put -O . reseaux.html
+          put -O . .htaccess
 
           quit
           EOF
