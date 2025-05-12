@@ -9,6 +9,18 @@
   --transition: 0.3s ease;
 }
 
+html.light-mode {
+  --color-bg: #ffffff;
+  --color-fg: #111;
+  --color-muted: #444;
+}
+
+html.dark-mode {
+  --color-bg: #111;
+  --color-fg: #f2f2f2;
+  --color-muted: #888;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -17,13 +29,7 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   transition: background-color var(--transition), color var(--transition);
-  padding-top: 80px; /* évite de passer sous la navbar */
-}
-
-.light {
-  --color-bg: #ffffff;
-  --color-fg: #111;
-  --color-muted: #444;
+  padding-top: 80px;
 }
 
 /* Navbar */

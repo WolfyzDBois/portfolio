@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Blog | Mon Portfolio</title>
+
+  <script>
+    // Appliquer le thème sauvegardé immédiatement pour éviter le flash blanc
+    (function() {
+      const mode = localStorage.getItem('mode');
+      if (mode === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+      } else {
+        document.documentElement.classList.add('light-mode');
+      }
+    })();
+  </script>
+
+
+
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/blog.css" />
   <link rel="icon" href="assets/icons/logo.png" type="image/png" />
