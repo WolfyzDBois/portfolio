@@ -1,0 +1,84 @@
+/* styles/index.css - Mise en page de l'accueil avec photo + texte */
+
+.hero-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px 60px;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+  
+  .hero-left {
+    flex: 0 0 300px;
+    text-align: center;
+  }
+  
+  .hero-photo {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  }
+  
+  .hero-right {
+    max-width: 500px;
+    flex: 1;
+  }
+  
+  .hero-right h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-right p {
+    font-size: 1.2rem;
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .cta {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .cta:hover {
+    background-color: var(--color-fg);
+    color: var(--color-bg);
+  }
+  
+  @media (max-width: 768px) {
+    .hero-grid {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .hero-left,
+    .hero-right {
+      text-align: center;
+    }
+  
+    .hero-right h1 {
+      font-size: 2rem;
+    }
+  
+    .hero-right p {
+      font-size: 1rem;
+    }
+  
+    .hero-photo {
+      width: 220px;
+      height: 220px;
+    }
+  }
+  

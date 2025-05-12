@@ -1,0 +1,98 @@
+/* styles/cv.css - Style dédié à la page CV avec timeline stylisée */
+
+.cv-section {
+    max-width: 800px;
+    margin: 120px auto 60px;
+    padding: 40px;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    position: relative;
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .cv-block {
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 40px;
+  }
+  
+  .cv-block h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .cv-entry {
+    margin-bottom: 30px;
+    padding-left: 25px;
+    position: relative;
+    border-left: 2px solid var(--color-accent);
+  }
+  
+  .cv-entry::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 0.4rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+  }
+  
+  .cv-entry h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .cv-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 0.7rem;
+  }
+  
+  .cv-entry ul {
+    list-style: disc inside;
+    padding-left: 0;
+    line-height: 1.5;
+  }
+  
+  .cv-entry p {
+    margin: 0.5rem 0 0;
+    line-height: 1.6;
+    color: var(--color-muted);
+  }
+  
+  @media (max-width: 600px) {
+    .cv-section {
+      padding: 20px;
+    }
+  
+    .cv-block {
+      padding-left: 25px;
+    }
+  
+    .cv-entry::before {
+      left: -12px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
+  /* Fade animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -1,0 +1,101 @@
+/* styles/article.css - Style générique pour tous les articles du blog */
+
+.article-container {
+    max-width: 900px;
+    margin: 120px auto 60px;
+    padding: 40px;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .article-header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  
+  .article-meta img {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  
+  .article-meta span {
+    display: flex;
+    align-items: center;
+  }
+  
+  .article-content p {
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--color-fg);
+  }
+  
+  .article-content ul {
+    padding-left: 20px;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+  
+  .article-content li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .article-img {
+    width: 100%;
+    max-width: 700px;
+    margin: 1.5rem auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  }
+  
+  pre {
+    background-color: #1e1e1e;
+    color: #f2f2f2;
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Courier New', monospace;
+    tab-size: 4;
+  }
+  
+  @media (max-width: 600px) {
+    .article-container {
+      padding: 25px;
+    }
+  
+    .article-header h1 {
+      font-size: 1.6rem;
+    }
+  
+    .article-meta {
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+  
+    pre {
+      font-size: 0.85rem;
+    }
+  }
+  

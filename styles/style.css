@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Livvic:wght@300;400;600&display=swap');
+
+:root {
+  --font-main: 'Livvic', sans-serif;
+  --color-bg: #111;
+  --color-fg: #f2f2f2;
+  --color-accent: #c2b280;
+  --color-muted: #888;
+  --transition: 0.3s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-main);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition);
+  padding-top: 80px; /* évite de passer sous la navbar */
+}
+
+.light {
+  --color-bg: #ffffff;
+  --color-fg: #111;
+  --color-muted: #444;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg);
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links a {
+  color: var(--color-fg);
+  text-decoration: none;
+  font-weight: 400;
+  transition: color var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
+#toggle-theme {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-fg);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

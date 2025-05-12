@@ -1,0 +1,58 @@
+name: Deploy to FTP
+
+on:
+  push:
+    branches:
+      - main  # ou master selon ta branche
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: Deploy only specific files and folders
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_PORT: ${{ secrets.FTP_PORT }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          lftp -u "$FTP_USER","$FTP_PASS" -p "$FTP_PORT" "$FTP_HOST" <<EOF
+          set ftp:list-options -a
+          set ssl:verify-certificate no
+          open -u "$FTP_USER","$FTP_PASS" -p $FTP_PORT $FTP_HOST
+          cd public_html
+
+          # Supprimer les fichiers et dossiers cibles
+          rm -r assets
+          rm -r blog
+          rm -r projects
+          rm -r scripts
+          rm -r styles
+          rm -f blog.html
+          rm -f cv.html
+          rm -f index.html
+          rm -f projects.html
+          rm -f reseaux.html
+
+          # Upload des versions mises à jour
+          mirror --reverse --verbose --only-newer --exclude-glob README.md assets assets
+          mirror --reverse --verbose --only-newer blog blog
+          mirror --reverse --verbose --only-newer projects projects
+          mirror --reverse --verbose --only-newer scripts scripts
+          mirror --reverse --verbose --only-newer styles styles
+
+          put -O . blog.html
+          put -O . cv.html
+          put -O . index.html
+          put -O . projects.html
+          put -O . reseaux.html
+
+          quit
+          EOF

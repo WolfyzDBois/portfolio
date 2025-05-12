@@ -1,0 +1,84 @@
+/* styles/projects.css - Style pour la page projects.html */
+
+.projects-section {
+    max-width: 900px;
+    margin: 120px auto 60px;
+    padding: 40px;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .project-block h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 0.5rem;
+  }
+  
+  .project-entry {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 40px;
+    border-left: 2px solid var(--color-accent);
+  }
+  
+  .project-entry::before {
+    content: "";
+    position: absolute;
+    left: -9px;
+    top: 6px;
+    width: 16px;
+    height: 16px;
+    background-color: var(--color-accent);
+    border-radius: 50%;
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+  }
+  
+  .project-entry h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .project-entry h3 a {
+    text-decoration: none;
+    color: var(--color-fg);
+    transition: color 0.2s;
+  }
+  
+  .project-entry h3 a:hover {
+    color: var(--color-accent);
+  }
+  
+  .project-date {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin-bottom: 0.6rem;
+  }
+  
+  .project-entry p {
+    margin: 0.5rem 0;
+    color: var(--color-fg);
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 600px) {
+    .projects-section {
+      padding: 25px;
+    }
+  
+    .project-entry {
+      padding-left: 20px;
+    }
+  
+    .project-entry::before {
+      left: -11px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+  
