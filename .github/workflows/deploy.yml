@@ -3,7 +3,7 @@ name: Deploy to FTP
 on:
   push:
     branches:
-      - main  # ou master selon ton dépôt
+      - main
 
 jobs:
   ftp-deploy:
@@ -16,7 +16,7 @@ jobs:
       - name: Install lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      # 🔴 Étape 1 : suppression des anciens fichiers et dossiers
+      # 🔴 Étape 1 : suppression des anciens fichiers et pages
       - name: Cleanup old FTP content
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
@@ -27,10 +27,9 @@ jobs:
           lftp -u "$FTP_USER","$FTP_PASS" -p "$FTP_PORT" "$FTP_HOST" <<EOF
           set ftp:list-options -a
           set ssl:verify-certificate no
-          cd public_html
 
           rm -r assets
-          rm -r blog
+          rm -r blogs
           rm -r projects
           rm -r scripts
           rm -r styles
@@ -56,10 +55,9 @@ jobs:
           lftp -u "$FTP_USER","$FTP_PASS" -p "$FTP_PORT" "$FTP_HOST" <<EOF
           set ftp:list-options -a
           set ssl:verify-certificate no
-          cd public_html
 
           mirror --reverse --verbose --only-newer assets assets
-          mirror --reverse --verbose --only-newer blog blog
+          mirror --reverse --verbose --only-newer blogs blogs
           mirror --reverse --verbose --only-newer projects projects
           mirror --reverse --verbose --only-newer scripts scripts
           mirror --reverse --verbose --only-newer styles styles
