@@ -1,0 +1,13 @@
+# Activer la réécriture d'URL
+RewriteEngine On
+
+# Ne pas appliquer aux fichiers/dossiers physiques existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rediriger les URL sans .html vers leur équivalent avec .html
+RewriteRule ^([a-zA-Z0-9_-]+)/?$ $1.html [L]
+
+# Rediriger automatiquement vers la version sans .html (optionnel)
+# RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\\s([^.]+)\\.html\\s
+# RewriteRule ^ %1 [R=301,L]
