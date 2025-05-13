@@ -5,38 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Accueil | Mon Portfolio</title>
 
-  <script>
-    // Appliquer le thème sauvegardé immédiatement pour éviter le flash blanc
-    (function() {
-      const mode = localStorage.getItem('mode');
-      if (mode === 'dark') {
-        document.documentElement.classList.add('dark-mode');
-      } else {
-        document.documentElement.classList.add('light-mode');
-      }
-    })();
-  </script>
-  
-
   <link rel="stylesheet" href="styles/index.css" />
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="icon" href="assets/icons/logo.png" type="image/png" />
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 </head>
-<body class="light">
+<body>
 
   <nav class="navbar">
-    <div class="nav-brand">WolfyzDBois</div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Accueil</a></li>
+    <div class="nav-header">
+      <span class="nav-brand">WolfyzDBois</span>
+      <button class="nav-toggle" id="nav-toggle">☰ Menu</button>
+    </div>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="index.html">Accueil</a></li>
       <li><a href="cv.html">CV</a></li>
       <li><a href="projects.html">Projets</a></li>
       <li><a href="reseaux.html">Réseaux</a></li>
-      <li><a href="blog.html">Réseaux</a></li>
       <li><a href="blog.html">Blog</a></li>
-
     </ul>
-    <button id="toggle-theme" aria-label="Basculer le thème">🌓</button>
   </nav>
+  
 
   <main class="hero-grid">
     <div class="hero-left">

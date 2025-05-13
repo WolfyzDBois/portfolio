@@ -1,63 +1,74 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Créer un portfolio moderne | Blog</title>
-  <link rel="stylesheet" href="../styles/style.css">
-  <link rel="stylesheet" href="../styles/article.css">
-  <link rel="icon" href="../assets/icons/logo.png" type="image/png">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
-  <script>hljs.highlightAll();</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Utiliser ShareX sur Windows | Blog | WolfyzDBois</title>
+  <link rel="stylesheet" href="../styles/style.css" />
+  <link rel="stylesheet" href="../styles/article.css" />
+  <link rel="icon" href="../assets/icons/logo.png" type="image/png" />
+  <link rel="icon" href="../assets/icons/favicon.ico" type="image/x-icon" />
 </head>
-<body class="light">
+<body>
 
   <nav class="navbar">
-    <div class="nav-brand">MonPortfolio</div>
-    <ul class="nav-links">
+    <div class="nav-header">
+      <span class="nav-brand">WolfyzDBois</span>
+      <button class="nav-toggle" id="nav-toggle">☰ Menu</button>
+    </div>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="../index.html">Accueil</a></li>
       <li><a href="../cv.html">CV</a></li>
       <li><a href="../projects.html">Projets</a></li>
       <li><a href="../reseaux.html">Réseaux</a></li>
       <li><a href="../blog.html">Blog</a></li>
     </ul>
-    <button id="toggle-theme" aria-label="Basculer le thème">🌓</button>
   </nav>
+  
 
-  <main class="article-container">
+  <main class="article-content">
     <header class="article-header">
-      <h1>Créer un Portfolio Moderne en HTML/CSS</h1>
+      <h1>Utiliser ShareX sur Windows</h1>
       <div class="article-meta">
-        <span><img src="../assets/icons/user.png" alt="Auteur"> Thibault Ponsot</span>
-        <span><img src="../assets/icons/calendar.png" alt="Date"> 12 mai 2025</span>
-        <span><img src="../assets/icons/tag.png" alt="Sujet"> Développement Web</span>
+        <span><strong>Publié par :</strong> Thibault Ponsot</span>
+        <span><strong>Date :</strong> 12 mai 2025</span>
       </div>
     </header>
 
-    <article class="article-content">
-      <p>Créer un <strong>portfolio moderne</strong> n'est pas aussi compliqué qu’il y paraît. Il faut simplement de la rigueur, une structure claire, et un bon style visuel.</p>
+    <article>
+      <p><strong>ShareX</strong> est un logiciel gratuit pour capturer et partager des captures d'écran, largement utilisé par les développeurs et designers.</p>
 
-      <p>Voici les éléments fondamentaux que j’ai utilisés :</p>
+      <h2>📥 Installation</h2>
+      <p>Tu peux télécharger ShareX sur le site officiel : <a href="https://getsharex.com/" target="_blank">getsharex.com</a>.</p>
 
+      <h2>⚙️ Configuration de l’upload</h2>
+      <p>Voici un exemple de configuration JSON pour envoyer directement tes images vers un hébergeur personnalisé :</p>
+
+      <pre><code class="json">
+{
+  "RequestURL": "https://api.tixte.com/v1/upload",
+  "Headers": {
+    "Authorization": "YOUR_API_KEY"
+  },
+  "Body": "MultipartFormData",
+  "FileFormName": "file",
+  "URL": "$json:data.url$"
+}
+      </code></pre>
+
+      <h2>🧠 Astuces utiles</h2>
       <ul>
-        <li><em>Un design épuré</em>, basé sur des couleurs sombres et un accent doré</li>
-        <li>Des <strong>sections dédiées</strong> : accueil, CV, projets, réseaux, blog</li>
-        <li>Un système de thème clair/sombre accessible</li>
+        <li>Tu peux configurer un raccourci pour la capture rapide (ex : <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>4</kbd>).</li>
+        <li>Utilise l'outil "After capture tasks" pour envoyer automatiquement vers Discord ou FTP.</li>
       </ul>
 
-      <p>Ci-dessous, un exemple de bloc de code HTML avec coloration syntaxique :</p>
+      <p>ShareX est un outil puissant, et une fois bien configuré, il fait gagner un temps précieux !</p>
 
-      <pre><code class="language-html">&lt;section class="hero"&gt;
-  &lt;h1&gt;Bienvenue sur mon portfolio&lt;/h1&gt;
-  &lt;p&gt;Je suis développeur web passionné.&lt;/p&gt;
-&lt;/section&gt;
-</code></pre>
+      <div class="alert info">Ceci est une information importante.</div>
+      <div class="alert success">Voici un conseil utile pour vos projets.</div>
+      <div class="alert warning">Faites attention à ce point critique.</div>
+      <div class="alert danger">Ceci peut entraîner des pertes de données.</div>
 
-      <p>Et voici une image représentative :</p>
-      <img src="../assets/images/portfolio_example.png" alt="Aperçu Portfolio" class="article-img">
-
-      <p>Ce portfolio a été entièrement conçu à la main sans framework, ce qui m’a permis de mieux comprendre la structure HTML/CSS moderne.</p>
     </article>
   </main>
 

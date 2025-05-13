@@ -1,5 +1,11 @@
 /* styles/blog.css - Style pour la page blog.html */
 
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+
 .blog-section {
     max-width: 900px;
     margin: 120px auto 60px;

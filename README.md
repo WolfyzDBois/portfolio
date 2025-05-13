@@ -7,7 +7,6 @@ Ce site présente mon parcours, mes projets et mes articles techniques.
 # ToDo
 
 - Favicon et nom
-- Flash à corriger
 - Blog
 - Compétences
 - Access

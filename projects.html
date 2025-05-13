@@ -3,52 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projets | Mon Portfolio</title>
-
-  <script>
-    // Appliquer le thème sauvegardé immédiatement pour éviter le flash blanc
-    (function() {
-      const mode = localStorage.getItem('mode');
-      if (mode === 'dark') {
-        document.documentElement.classList.add('dark-mode');
-      } else {
-        document.documentElement.classList.add('light-mode');
-      }
-    })();
-  </script>
-
-
+  <title>Projets | WolfyzDBois</title>
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/projects.css" />
   <link rel="icon" href="assets/icons/logo.png" type="image/png" />
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 </head>
-<body class="light">
+<body>
 
   <nav class="navbar">
-    <div class="nav-brand">WolfyzDBois</div>
-    <ul class="nav-links">
+    <div class="nav-header">
+      <span class="nav-brand">WolfyzDBois</span>
+      <button class="nav-toggle" id="nav-toggle">☰ Menu</button>
+    </div>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="index.html">Accueil</a></li>
       <li><a href="cv.html">CV</a></li>
-      <li><a href="projects.html" class="active">Projets</a></li>
+      <li><a href="projects.html">Projets</a></li>
       <li><a href="reseaux.html">Réseaux</a></li>
       <li><a href="blog.html">Blog</a></li>
     </ul>
-    <button id="toggle-theme" aria-label="Basculer le thème">🌓</button>
   </nav>
-
+  
   <main class="projects-section">
-    <section class="project-block">
-      <h2>Mes Projets</h2>
+    <h1>Mes Projets</h1>
+    <p>Voici quelques projets que j’ai réalisés :</p>
 
-      <div class="project-entry">
-        <h3><a href="projects/syndromefear.html">Jeu SyndromeFear</a></h3>
-        <span class="project-date">2025</span>
-        <p>Développement d'un jeu vidéo 2D en C# avec Unity.</p>
+    <div class="project-list">
+      <div class="project-card">
+        <h2><a href="projects/syndromefear.html">Syndrome Fear</a></h2>
+        <p>Un jeu d’horreur narratif développé en Unity avec multijoueur (LAN) et développé en C#.</p>
       </div>
-
-    
-
-    </section>
+      <!-- Ajoute ici d'autres projets si besoin -->
+    </div>
   </main>
 
   <footer>

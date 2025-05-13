@@ -1,108 +1,119 @@
-/* styles/subproject.css - Style des pages individuelles de projets */
+/* styles/subproject.css - Harmonisé avec CV/Projects */
 
-.project-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    padding: 100px 40px 60px;
-    max-width: 1200px;
-    margin: 0 auto;
+.project-wrapper {
+  max-width: 1100px;
+  margin: 100px auto 60px;
+  padding: 20px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  animation: fadeIn 0.6s ease-out;
+}
+
+.project-sidebar {
+  flex: 0 0 280px;
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border: 1px solid var(--color-accent);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.project-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.project-tag {
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin: 5px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.project-button,
+.project-sidebar .cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: var(--color-accent);
+  color: var(--color-bg);
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.project-button:hover,
+.project-sidebar .cta:hover {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+.project-content {
+  flex: 1;
+  max-width: 720px;
+  color: var(--color-fg);
+}
+
+.project-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.project-content p {
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.8;
+}
+
+.project-content ul {
+  padding-left: 20px;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.project-content ul li {
+  list-style-type: disc;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .project-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 60px 20px;
   }
-  
+
   .project-sidebar {
-    flex: 0 0 280px;
-    background-color: var(--color-bg);
-    color: var(--color-fg);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    text-align: center;
-    position: sticky;
-    top: 100px;
-    height: fit-content;
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 30px;
   }
-  
-  .project-logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 15px;
-  }
-  
-  .project-meta h3 {
-    margin: 10px 0 5px;
-    font-size: 1.3rem;
-  }
-  
-  .project-meta p {
-    margin: 5px 0;
-    font-size: 0.95rem;
-    color: var(--color-muted);
-  }
-  
-  .project-button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: var(--color-accent);
-    color: var(--color-bg);
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
-  }
-  
-  .project-button:hover {
-    background-color: var(--color-fg);
-    color: var(--color-bg);
-  }
-  
+
   .project-content {
-    flex: 1;
-    max-width: 750px;
+    max-width: 100%;
   }
-  
-  .project-content h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .project-content p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    color: var(--color-fg);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .project-content ul {
-    padding-left: 20px;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-  
-  .project-content ul li {
-    list-style-type: disc;
-    margin-bottom: 0.5rem;
-  }
-  
-  /* Responsive */
-  @media (max-width: 900px) {
-    .project-container {
-      flex-direction: column;
-      align-items: stretch;
-      padding: 60px 20px;
-    }
-  
-    .project-sidebar {
-      position: relative;
-      top: 0;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-  
-    .project-content {
-      max-width: 100%;
-    }
-  }
-  
+}

@@ -1,26 +1,19 @@
-// scripts/script.js - Gestion du thème clair/sombre
+// scripts/script.js
+
+// Thème sombre permanent — aucune bascule de thème nécessaire
+document.addEventListener("DOMContentLoaded", () => {
+  const html = document.documentElement;
+  html.classList.add("dark-mode");
+});
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const body = document.body;
-    const toggleBtn = document.getElementById("toggle-theme");
-  
-    const setTheme = (theme) => {
-      if (theme === "light") {
-        body.classList.add("light");
-        localStorage.setItem("theme", "light");
-      } else {
-        body.classList.remove("light");
-        localStorage.setItem("theme", "dark");
-      }
-    };
-  
-    // Appliquer le thème sauvegardé
-    const savedTheme = localStorage.getItem("theme") || "dark";
-    setTheme(savedTheme);
-  
+  const toggleBtn = document.getElementById("nav-toggle");
+  const menu = document.getElementById("nav-menu");
+
+  if (toggleBtn && menu) {
     toggleBtn.addEventListener("click", () => {
-      const isLight = body.classList.contains("light");
-      setTheme(isLight ? "dark" : "light");
+      menu.classList.toggle("show");
     });
-  });
-  
+  }
+});

@@ -4,38 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CV | WolfyzDBois</title>
-
-
-  <script>
-    // Appliquer le thème sauvegardé immédiatement pour éviter le flash blanc
-    (function() {
-      const mode = localStorage.getItem('mode');
-      if (mode === 'dark') {
-        document.documentElement.classList.add('dark-mode');
-      } else {
-        document.documentElement.classList.add('light-mode');
-      }
-    })();
-  </script>
-  
-
   <link rel="stylesheet" href="styles/style.css" />
   <link rel="stylesheet" href="styles/cv.css" />
   <link rel="icon" href="assets/icons/logo.png" type="image/png" />
+  <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 </head>
-<body class="light">
+<body>
 
   <nav class="navbar">
-    <div class="nav-brand">WolfyzDBois</div>
-    <ul class="nav-links">
+    <div class="nav-header">
+      <span class="nav-brand">WolfyzDBois</span>
+      <button class="nav-toggle" id="nav-toggle">☰ Menu</button>
+    </div>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="index.html">Accueil</a></li>
-      <li><a href="cv.html" class="active">CV</a></li>
+      <li><a href="cv.html">CV</a></li>
       <li><a href="projects.html">Projets</a></li>
       <li><a href="reseaux.html">Réseaux</a></li>
       <li><a href="blog.html">Blog</a></li>
     </ul>
-    <button id="toggle-theme" aria-label="Basculer le thème">🌓</button>
   </nav>
+  
 
   <main class="cv-section">
     <section class="cv-block">
@@ -49,7 +38,6 @@
           <li>Réparation de lunettes</li>
         </ul>
       </div>
-
     </section>
 
     <section class="cv-block">
@@ -77,19 +65,53 @@
         <h3>Bénévole - Aide Jeune</h3>
         <span class="cv-date">2024 - Aujourd'hui</span>
       </div>
-    </section>
-
       <div class="cv-entry">
         <h3>Bénévole - Prologin</h3>
         <span class="cv-date">2025 - Aujourd'hui</span>
       </div>
+      <div class="cv-entry">
+        <h3>Membre - L'Atelier</h3>
+        <span class="cv-date">2025 - Aujourd'hui</span>
+      </div>
     </section>
 
-    <div class="cv-entry">
-      <h3>Membre - L'Atelier</h3>
-      <span class="cv-date">2025 - Aujourd'hui</span>
-    </div>
+    <section class="cv-block">
+      <h2>Compétences</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <!-- Docker Logo -->
+          <img src="assets/icons/docker.svg" alt="Docker" />
+          <span>Docker</span>
+        </div>
+        <div class="skill-card">
+          <!-- Python Logo -->
+          <img src="assets/icons/python.svg" alt="Python" />
+          <span>Python</span>
+        </div>
+        <div class="skill-card">
+          <!-- Node.js Logo -->
+          <img src="assets/icons/nodejs.svg" alt="Node.js" />
+          <span>Node.js</span>
+        </div>
+        <div class="skill-card">
+          <!-- C# Logo -->
+          <img src="assets/icons/csharp.svg" alt="C#" />
+          <span>C#</span>
+        </div>
+        <div class="skill-card">
+          <!-- OCaml Logo -->
+          <img src="assets/icons/ocaml.svg" alt="OCaml" />
+          <span>OCaml</span>
+        </div>
+        <div class="skill-card">
+          <!-- Git Logo -->
+          <img src="assets/icons/git.svg" alt="Git" />
+          <span>Git</span>
+        </div>
+      </div>
     </section>
+    
+    
   </main>
 
   <footer>
