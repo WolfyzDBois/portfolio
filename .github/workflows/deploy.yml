@@ -67,7 +67,6 @@ jobs:
           put -O . index.html
           put -O . projects.html
           put -O . reseaux.html
-          put -O . .htaccess
 
           quit
           EOF
