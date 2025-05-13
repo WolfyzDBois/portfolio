@@ -1,0 +1,57 @@
+name: Vérification des ressources en ligne
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+jobs:
+  verify-files:
+    runs-on: ubuntu-latest
+
+    env:
+      BASE_URL: https://wolfyz.fr  # ✅ Change en fonction de ton domaine ou sous-domaine final
+
+    steps:
+      - name: Vérifier les pages principales
+        run: |
+          curl -fSL "$BASE_URL/index.html"
+          curl -fSL "$BASE_URL/cv.html"
+          curl -fSL "$BASE_URL/projects.html"
+          curl -fSL "$BASE_URL/reseaux.html"
+          curl -fSL "$BASE_URL/blog.html"
+          curl -fSL "$BASE_URL/home.html"
+
+      - name: Vérifier les sous-pages
+        run: |
+          curl -fSL "$BASE_URL/blogs/article1.html"
+          curl -fSL "$BASE_URL/projects/syndromefear.html"
+
+      - name: Vérifier les fichiers CSS
+        run: |
+          curl -fSL "$BASE_URL/styles/style.css"
+          curl -fSL "$BASE_URL/styles/index.css"
+          curl -fSL "$BASE_URL/styles/cv.css"
+          curl -fSL "$BASE_URL/styles/projects.css"
+          curl -fSL "$BASE_URL/styles/home.css"
+          curl -fSL "$BASE_URL/styles/blog.css"
+          curl -fSL "$BASE_URL/styles/article.css"
+          curl -fSL "$BASE_URL/styles/subproject.css"
+          curl -fSL "$BASE_URL/styles/reseaux.css"
+
+      - name: Vérifier les fichiers JS
+        run: |
+          curl -fSL "$BASE_URL/scripts/script.js"
+
+      - name: Vérifier les assets
+        run: |
+          curl -fSL "$BASE_URL/assets/Thibault.png"
+          curl -fSL "$BASE_URL/assets/Untitled.png"
+          curl -fSL "$BASE_URL/assets/icons/logo.png"
+          curl -fSL "$BASE_URL/assets/icons/docker.svg"
+          curl -fSL "$BASE_URL/assets/icons/python.svg"
+          curl -fSL "$BASE_URL/assets/icons/nodejs.svg"
+          curl -fSL "$BASE_URL/assets/icons/csharp.svg"
+          curl -fSL "$BASE_URL/assets/icons/git.svg"
+          curl -fSL "$BASE_URL/assets/icons/ocaml.svg"
+
