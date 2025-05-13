@@ -1,4 +1,4 @@
-name: Vérification des ressources en ligne
+name: Vérification des fichiers sur le FTP
 
 on:
   workflow_dispatch:
@@ -6,52 +6,62 @@ on:
     branches: [main]
 
 jobs:
-  verify-files:
+  verify-ftp:
     runs-on: ubuntu-latest
 
-    env:
-      BASE_URL: https://wolfyz.fr  # ✅ Change en fonction de ton domaine ou sous-domaine final
-
     steps:
-      - name: Vérifier les pages principales
-        run: |
-          curl -fSL "$BASE_URL/index.html"
-          curl -fSL "$BASE_URL/cv.html"
-          curl -fSL "$BASE_URL/projects.html"
-          curl -fSL "$BASE_URL/reseaux.html"
-          curl -fSL "$BASE_URL/blog.html"
-          curl -fSL "$BASE_URL/home.html"
+      - name: Attendre 2 minutes pour laisser le déploiement se terminer
+        run: sleep 120
 
-      - name: Vérifier les sous-pages
-        run: |
-          curl -fSL "$BASE_URL/blogs/article1.html"
-          curl -fSL "$BASE_URL/projects/syndromefear.html"
+      - name: Installer lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Vérifier les fichiers CSS
+      - name: Vérifier la présence des fichiers sur le FTP
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
         run: |
-          curl -fSL "$BASE_URL/styles/style.css"
-          curl -fSL "$BASE_URL/styles/index.css"
-          curl -fSL "$BASE_URL/styles/cv.css"
-          curl -fSL "$BASE_URL/styles/projects.css"
-          curl -fSL "$BASE_URL/styles/home.css"
-          curl -fSL "$BASE_URL/styles/blog.css"
-          curl -fSL "$BASE_URL/styles/article.css"
-          curl -fSL "$BASE_URL/styles/subproject.css"
-          curl -fSL "$BASE_URL/styles/reseaux.css"
+          lftp -u "$FTP_USER","$FTP_PASS" "$FTP_HOST" <<EOF
+          set ssl:verify-certificate no
 
-      - name: Vérifier les fichiers JS
-        run: |
-          curl -fSL "$BASE_URL/scripts/script.js"
+          echo "🔍 Vérification des fichiers principaux HTML..."
+          cls -1 public_html/index.html        || (echo "❌ index.html manquant" && exit 1)
+          cls -1 public_html/cv.html           || (echo "❌ cv.html manquant" && exit 1)
+          cls -1 public_html/projects.html     || (echo "❌ projects.html manquant" && exit 1)
+          cls -1 public_html/reseaux.html      || (echo "❌ reseaux.html manquant" && exit 1)
+          cls -1 public_html/blog.html         || (echo "❌ blog.html manquant" && exit 1)
+          cls -1 public_html/home.html         || (echo "❌ home.html manquant" && exit 1)
 
-      - name: Vérifier les assets
-        run: |
-          curl -fSL "$BASE_URL/assets/Thibault.png"
-          curl -fSL "$BASE_URL/assets/Untitled.png"
-          curl -fSL "$BASE_URL/assets/icons/logo.png"
-          curl -fSL "$BASE_URL/assets/icons/docker.svg"
-          curl -fSL "$BASE_URL/assets/icons/python.svg"
-          curl -fSL "$BASE_URL/assets/icons/nodejs.svg"
-          curl -fSL "$BASE_URL/assets/icons/csharp.svg"
-          curl -fSL "$BASE_URL/assets/icons/git.svg"
-          curl -fSL "$BASE_URL/assets/icons/ocaml.svg"
+          echo "🔍 Vérification des fichiers de styles..."
+          cls -1 public_html/styles/style.css         || (echo "❌ style.css manquant" && exit 1)
+          cls -1 public_html/styles/index.css         || (echo "❌ index.css manquant" && exit 1)
+          cls -1 public_html/styles/cv.css            || (echo "❌ cv.css manquant" && exit 1)
+          cls -1 public_html/styles/projects.css      || (echo "❌ projects.css manquant" && exit 1)
+          cls -1 public_html/styles/home.css          || (echo "❌ home.css manquant" && exit 1)
+          cls -1 public_html/styles/blog.css          || (echo "❌ blog.css manquant" && exit 1)
+          cls -1 public_html/styles/article.css       || (echo "❌ article.css manquant" && exit 1)
+          cls -1 public_html/styles/subproject.css    || (echo "❌ subproject.css manquant" && exit 1)
+          cls -1 public_html/styles/reseaux.css       || (echo "❌ reseaux.css manquant" && exit 1)
 
+          echo "🔍 Vérification des scripts JS..."
+          cls -1 public_html/scripts/script.js        || (echo "❌ script.js manquant" && exit 1)
+
+          echo "🔍 Vérification des assets..."
+          cls -1 public_html/assets/Thibault.png               || (echo "❌ Thibault.png manquant" && exit 1)
+          cls -1 public_html/assets/Untitled.png               || (echo "❌ Untitled.png manquant" && exit 1)
+          cls -1 public_html/assets/icons/logo.png             || (echo "❌ logo.png manquant" && exit 1)
+          cls -1 public_html/assets/icons/docker.svg           || (echo "❌ docker.svg manquant" && exit 1)
+          cls -1 public_html/assets/icons/python.svg           || (echo "❌ python.svg manquant" && exit 1)
+          cls -1 public_html/assets/icons/nodejs.svg           || (echo "❌ nodejs.svg manquant" && exit 1)
+          cls -1 public_html/assets/icons/csharp.svg           || (echo "❌ csharp.svg manquant" && exit 1)
+          cls -1 public_html/assets/icons/git.svg              || (echo "❌ git.svg manquant" && exit 1)
+          cls -1 public_html/assets/icons/ocaml.svg            || (echo "❌ ocaml.svg manquant" && exit 1)
+
+          echo "🔍 Vérification des sous-pages projet/blog..."
+          cls -1 public_html/blogs/article1.html               || (echo "❌ article1.html manquant" && exit 1)
+          cls -1 public_html/projects/syndromefear.html        || (echo "❌ syndromefear.html manquant" && exit 1)
+
+          echo "✅ Tous les fichiers attendus sont présents sur le serveur FTP."
+          quit
+          EOF
